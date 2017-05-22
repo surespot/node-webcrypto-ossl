@@ -129,11 +129,11 @@ Handle<std::string> EC_DSA_sign(Handle<ScopedEVP_PKEY> hKey, const EVP_MD *md, H
 	// returns a maximum allocation size, while the call without a NULL returns
 	// the real one, which may be smaller.
 	hSignature->resize(siglen);
-	sig = (byte*)hSignature->c_str();
+	//sig = (byte*)hSignature->c_str();
 
-	Handle<std::string> hWcSignature = ConvertDerSignatureToWebCryptoSignature(hKey->Get(), sig, siglen);
+	//Handle<std::string> hWcSignature = ConvertDerSignatureToWebCryptoSignature(hKey->Get(), sig, siglen);
 
-	return hWcSignature;
+	return hSignature;
 }
 
 bool EC_DSA_verify(Handle<ScopedEVP_PKEY> hKey, const EVP_MD *md, Handle<std::string> hData, Handle<std::string> hSignature) {
@@ -143,8 +143,10 @@ bool EC_DSA_verify(Handle<ScopedEVP_PKEY> hKey, const EVP_MD *md, Handle<std::st
 	size_t wcSignatureLen = hSignature->length();
 
 	bool incorrect;
-	Handle<std::string> hFormatedSignature = ConvertWebCryptoSignatureToDerSignature(hKey->Get(), pWcSignature, wcSignatureLen, &incorrect);
+	//Handle<std::string> hFormatedSignature = ConvertWebCryptoSignatureToDerSignature(hKey->Get(), pWcSignature, wcSignatureLen, &incorrect);
 
+	//surespot wants to use the DER encoded signature here because that's what iOS and Android use
+	Handle<std::string> hFormatedSignature = hSignature;
 	if (incorrect) {
 		LOG_INFO("Incorrect signature value");
 		return false;
