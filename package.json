@@ -1,6 +1,6 @@
 {
   "name": "node-webcrypto-ossl",
-  "version": "1.0.23",
+  "version": "1.0.25",
   "repository": {
     "type": "git",
     "url": "https://github.com/PeculiarVentures/node-webcrypto-ossl.git"
@@ -48,7 +48,7 @@
     "nan": "^2.5.1",
     "tslib": "^1.5.0",
     "typescript": "^2",
-    "webcrypto-core": "^0.1.15"
+    "webcrypto-core": "^0.1.16"
   },
   "devDependencies": {
     "live-server": "^1",
