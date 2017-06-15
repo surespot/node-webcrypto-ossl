@@ -71,7 +71,7 @@
                                 # OS != "win"
                                 {
                                     'libraries': [
-                                        '-l<(openssl_dir)/lib/libeay32.a'
+                                        '<(openssl_dir)/libcrypto.a'
                                     ]
                                 },
                             ],
